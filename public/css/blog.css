@@ -1,0 +1,92 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #d60000;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 1px 5px 10px orange;
+}
+
+/* Blog info container */
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* Individual study item (blog post) */
+.study-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #fafafa;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.study-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Study title */
+.study-title {
+    font-size: 100 em;
+    color: #f80000;
+    margin-bottom: 10px;
+}
+
+/* Study date */
+.study-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 10px;
+    position: relative;
+
+}
+
+/* Study notes */
+.study-notes {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Banner image styling */
+.study-banner {
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.banner-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .study-title {
+        font-size: 1.2em;
+    }
+
+    .banner-img {
+        height: 150px;
+    }
+}
