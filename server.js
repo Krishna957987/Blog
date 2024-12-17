@@ -73,42 +73,41 @@ app.get("/blog/:blogId", (req, res) => {
  );
 });
 
+
 app.put("/update-blog/:blogId", (req, res) => {
-    return db.run(
-      "update blog_info set banner=?, info=?, title=? where id = ?",
-      [req.body.banner, req.body.content, req.body.title, req.params.blogId],
-      (err, row) => {
-        if (err) {
-          console.error("Error fetching recent post:", err);
-          return res.status(500).json({ error: "Internal Server Error" });
-        } else if (!row) {
-          return res.status(404).json({ error: "No posts found" });
-        } else {
-          return res.status(200).json({ message: "updated" });
-        }
-      }
-    );
-   });
-   
-   
-   app.delete("/delete-blog/:blogId", (req, res) => {
-    return db.run(
-      "delete from blog_info where id = ?",
-      [req.params.blogId],
-      (err, row) => {
-        if (err) {
-          console.error("Error fetching recent post:", err);
-          return res.status(500).json({ error: "Internal Server Error" });
-        } else if (!row) {
-          return res.status(404).json({ error: "No posts found" });
-        } else {
-          return res.status(200).json({ message: "updated" });
-        }
-      }
-    );
-   })
+ return db.run(
+   "update blog_info set banner=?, info=?, title=? where id = ?",
+   [req.body.banner, req.body.content, req.body.title, req.params.blogId],
+   (err, row) => {
+     if (err) {
+       console.error("Error fetching recent post:", err);
+       return res.status(500).json({ error: "Internal Server Error" });
+     } else if (!row) {
+       return res.status(404).json({ error: "No posts found" });
+     } else {
+       return res.status(200).json({ message: "updated" });
+     }
+   }
+ );
+});
 
 
+app.delete("/delete-blog/:blogId", (req, res) => {
+ return db.run(
+   "delete from blog_info where id = ?",
+   [req.params.blogId],
+   (err, row) => {
+     if (err) {
+       console.error("Error fetching recent post:", err);
+       return res.status(500).json({ error: "Internal Server Error" });
+     } else if (!row) {
+       return res.status(404).json({ error: "No posts found" });
+     } else {
+       return res.status(200).json({ message: "updated" });
+     }
+   }
+ );
+});
 
 
 app.get("/", (req, res) => {
@@ -118,10 +117,7 @@ app.get("/", (req, res) => {
 
 app.post("/submit-post", (req, res) => {
  db.run(
-   `insert into blog_info(title,banner,date,info) values(?,?,?,?);
-
-
-       )`,
+   `insert into blog_info(title,banner,date,info) values(?,?,?,?)`,
    [req.body.title, req.body.bannerPath, "hello", req.body.content]
  );
  return res.status(200).json({
@@ -135,8 +131,9 @@ app.get("/editor", (req, res) => {
 });
 
 app.get("/blog", (req, res) => {
-    res.sendFile(path.join(initial_path, "editor.html"));
+    res.sendFile(path.join(initial_path, "blog.html"));
    });
+
 
 app.post("/public", (req, res) => {
  if (!req.files || !req.files.image) {
@@ -181,6 +178,3 @@ app.get('/recent-post', (req, res) => {
 app.listen(3000, () => {
  console.log("Listening on port 3000...");
 });
-
-
-
