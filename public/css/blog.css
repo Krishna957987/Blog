@@ -89,4 +89,11 @@ body {
     .banner-img {
         height: 150px;
     }
+
+.search-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap:.25rem
+
+}
 }
