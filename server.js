@@ -73,6 +73,40 @@ app.get("/blog/:blogId", (req, res) => {
  );
 });
 
+app.put("/update-blog/:blogId", (req, res) => {
+    return db.run(
+      "update blog_info set banner=?, info=?, title=? where id = ?",
+      [req.body.banner, req.body.content, req.body.title, req.params.blogId],
+      (err, row) => {
+        if (err) {
+          console.error("Error fetching recent post:", err);
+          return res.status(500).json({ error: "Internal Server Error" });
+        } else if (!row) {
+          return res.status(404).json({ error: "No posts found" });
+        } else {
+          return res.status(200).json({ message: "updated" });
+        }
+      }
+    );
+   });
+   
+   
+   app.delete("/delete-blog/:blogId", (req, res) => {
+    return db.run(
+      "delete from blog_info where id = ?",
+      [req.params.blogId],
+      (err, row) => {
+        if (err) {
+          console.error("Error fetching recent post:", err);
+          return res.status(500).json({ error: "Internal Server Error" });
+        } else if (!row) {
+          return res.status(404).json({ error: "No posts found" });
+        } else {
+          return res.status(200).json({ message: "updated" });
+        }
+      }
+    );
+   })
 
 
 

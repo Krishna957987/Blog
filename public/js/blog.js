@@ -56,13 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Show clear button when input is not empty
-        if (searchInput.value) {
-            clearSearchBtn.style.display = 'block';
-        } else {
-            clearSearchBtn.style.display = 'none';
-            showAllPosts();
-        }
-    }
+        
 
     function showAllPosts() {
         const blogPosts = document.querySelectorAll('.study-item');
@@ -82,4 +76,4 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error deleting blog post:', error));
     };
-});
+};})
