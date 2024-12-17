@@ -31,7 +31,7 @@ const db = new sqlite3.Database(dbPath, (err) => {
    db.run(`CREATE TABLE IF NOT EXISTS blog_info (
            id INTEGER PRIMARY KEY AUTOINCREMENT,
            banner TEXT,
-           date TEXT,
+           date DATE DEFAULT (CURRENT_DATE),
            info TEXT,
            title TEXT
        )`);
@@ -117,8 +117,8 @@ app.get("/", (req, res) => {
 
 app.post("/submit-post", (req, res) => {
  db.run(
-   `insert into blog_info(title,banner,date,info) values(?,?,?,?)`,
-   [req.body.title, req.body.bannerPath, "hello", req.body.content]
+   `insert into blog_info(title,banner,info) values(?,?,?)`,
+   [req.body.title, req.body.bannerPath, req.body.content]
  );
  return res.status(200).json({
    msg: "hello",
