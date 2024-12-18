@@ -7,6 +7,7 @@ const urlsToCache = [
  "/js/editor.js",
  "/Icons/Blog1.png",
  "/Icons/Blog2.png",
+ "/home.css"
 ];
 
 
