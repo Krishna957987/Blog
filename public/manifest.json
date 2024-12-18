@@ -2,6 +2,7 @@
     "name": "Blog",
     "short_name": "Blog",
     "start_url": "home.html",
+    "description":"A platform to create, edit, and share your personal blogs with the world.",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "theme_color": "#FFFFFF",
